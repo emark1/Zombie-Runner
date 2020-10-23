@@ -35,7 +35,9 @@ public class Weapon : MonoBehaviour
             HitImpact(hit);
             Debug.Log(hit.transform.name);
             if (hit.transform.name == "Enemy") {
+                EnemyAI enemyAI = hit.transform.GetComponent<EnemyAI>();
                 EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                enemyAI.isProvoked = true;
                 target.TakeDamage(damage);
             }
         } else {
